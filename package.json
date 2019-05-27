@@ -7,14 +7,14 @@
   "scripts": {
     "start": "webpack-dev-server --config docs/webpack.config.js",
     "demo": "NODE_ENV=production webpack --config docs/webpack.config.js",
-    "build": "rm -rf dist && NODE_ENV=production webpack",
+    "build": "rm -rf dist && webpack --env.NODE_ENV=production",
     "lint": "eslint src __tests__ --ext .js,.vue --fix; exit 0",
     "prepublish": "npm run test; npm run build",
     "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/spatie/vue-table-component.git"
+    "url": "https://github.com/cognibox/vue-table-component.git"
   },
   "keywords": [
     "spatie"
