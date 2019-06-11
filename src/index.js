@@ -17,4 +17,4 @@ export default {
   },
 };
 
-export { TableComponent, TableColumn };
+export { TableComponent, TableColumn, Pagination };
