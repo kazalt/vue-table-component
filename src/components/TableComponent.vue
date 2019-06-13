@@ -1,53 +1,53 @@
 <template>
-    <div class="table-component">
-        <div class="table-component__table-wrapper">
-            <table :class="fullTableClass">
-                <thead :class="fullTableHeadClass">
-                <tr>
-                    <table-column-header
-                            @click="changeSorting"
-                            v-for="column in columns"
-                            :key="column.show"
-                            :sort="sort"
-                            :column="column"
-                    ></table-column-header>
-                </tr>
-                </thead>
-                <tbody :class="fullTableBodyClass">
-                <table-row
-                        v-for="row in displayedRows"
-                        :key="row.vueTableComponentInternalRowId"
-                        :row="row"
-                        :columns="columns"
-						@rowClick="emitRowClick"
-                ></table-row>
-                </tbody>
-                <tfoot>
-                    <slot name="tfoot" :rows="rows"></slot>
-                </tfoot>
-            </table>
-        </div>
-
-        <div v-if="displayedRows.length === 0" class="table-component__message">
-            {{ filterNoResults }}
-        </div>
-
-        <div style="display:none;">
-            <slot></slot>
-        </div>
-
-        <template v-if="pagination">
-          <slot name="pagination" :pagination="pagination">
-            <pagination
-              :current-page="pagination.currentPage"
-              :per-page="pagination.perPage"
-              :count="count"
-              @pageChange="pageChange"
-              @ellipsisClick="paginationEllipsisClick"
-            ></pagination>
-          </slot>
-        </template>
+  <div class="table-component">
+    <div class="table-component__table-wrapper">
+      <table :class="fullTableClass">
+          <thead :class="fullTableHeadClass">
+          <tr>
+            <table-column-header
+              @click="changeSorting"
+              v-for="column in columns"
+              :key="column.show"
+              :sort="sort"
+              :column="column"
+            ></table-column-header>
+          </tr>
+          </thead>
+          <tbody :class="fullTableBodyClass">
+          <table-row
+            v-for="row in displayedRows"
+            :key="row.vueTableComponentInternalRowId"
+            :row="row"
+            :columns="columns"
+            @rowClick="emitRowClick"
+          ></table-row>
+          </tbody>
+          <tfoot>
+              <slot name="tfoot" :rows="rows"></slot>
+          </tfoot>
+      </table>
     </div>
+
+    <div v-if="displayedRows.length === 0" class="table-component__message">
+      {{ filterNoResults }}
+    </div>
+
+    <div style="display:none;">
+      <slot></slot>
+    </div>
+
+    <template v-if="pagination && count">
+      <slot name="pagination" :pagination="pagination">
+        <pagination
+          :current-page="pagination.currentPage"
+          :per-page="pagination.perPage"
+          :count="count"
+          @pageChange="pageChange"
+          @ellipsisClick="paginationEllipsisClick"
+        ></pagination>
+      </slot>
+    </template>
+  </div>
 </template>
 
 <script>
