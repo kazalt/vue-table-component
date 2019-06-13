@@ -8,7 +8,8 @@
     "start": "webpack-dev-server --config docs/webpack.config.js",
     "demo": "NODE_ENV=production webpack --config docs/webpack.config.js",
     "build": "rm -rf dist && webpack --env.NODE_ENV=production",
-    "lint": "eslint src __tests__ --ext .js,.vue --fix; exit 0"
+    "lint": "eslint src __tests__ --ext .js,.vue --fix; exit 0",
+    "test": "vue-cli-service test:unit --require test/setup.js test/**/*.spec.js"
   },
   "repository": {
     "type": "git",
@@ -21,48 +22,34 @@
   },
   "homepage": "https://github.com/cognibox/vue-table-component",
   "dependencies": {
-    "babel-eslint": "^7.2.3",
-    "eslint-plugin-vue": "^3.0.0"
-  },
-  "peerDependencies": {
-    "vue": "^2.5.0"
+    "vue": "^2.6.10",
+    "vue-multiselect": "^2.1.6"
   },
   "devDependencies": {
-    "babel-core": "^6.24.1",
-    "babel-loader": "^7.0.0",
-    "babel-plugin-transform-object-rest-spread": "^6.16.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.4.0",
-    "css-loader": "^0.28.1",
-    "diffable-html": "^2.1.0",
-    "eslint": "^4.0.0",
+    "@vue/cli-plugin-babel": "^3.7.0",
+    "@vue/cli-plugin-unit-mocha": "^3.7.0",
+    "@vue/cli-service": "^3.7.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-rewire": "^1.2.0",
+    "chai": "^4.2.0",
+    "eslint": "^5.16.0",
     "eslint-config-cbx": "git+https://github.com/cognibox/eslint-config-cbx.git",
-    "jest": "^19.0.0",
-    "jest-serializer-html": "^4.0.0",
-    "jest-vue-preprocessor": "^0.2.0",
-    "simulant": "^0.2.2",
-    "vue": "^2.5.0",
-    "vue-loader": "^12.0.3",
-    "vue-template-compiler": "^2.3.0",
-    "webpack": "^2.3.3",
-    "webpack-dev-server": "^2.4.2",
-    "webpack-merge": "^4.1.0"
-  },
-  "jest": {
-    "testRegex": "test.js$",
-    "moduleFileExtensions": [
-      "js",
-      "vue"
-    ],
-    "setupFiles": [
-      "<rootDir>/tests/bootstrap"
-    ],
-    "snapshotSerializers": [
-      "<rootDir>/tests/html-serializer"
-    ],
-    "transform": {
-      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-      ".*\\.(vue)$": "<rootDir>/node_modules/jest-vue-preprocessor"
-    }
+    "eslint-plugin-vue": "^5.2.2",
+    "font-awesome": "^4.7.0",
+    "jsdom": "^15.1.1",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.1.0",
+    "sinon": "^7.3.2",
+    "sinon-chai": "^3.3.0",
+    "stylelint": "^10.0.1",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-processor-arbitrary-tags": "^0.1.0",
+    "stylelint-scss": "^3.6.1",
+    "vue-router": "^3.0.6",
+    "vue-template-compiler": "^2.6.10",
+    "webpack-cli": "^3.3.1"
   }
 }
