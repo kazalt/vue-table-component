@@ -8,8 +8,9 @@
         </a>
       </li>
 
-      <template v-for="page in pages">
+      <template v-for="(page, index) in pages">
         <li
+          :key="`page${index}`"
           v-if="page.type === 'page'"
           class="page-item"
           :class="{ active: page.active }"
@@ -17,7 +18,7 @@
           <a class="page-link" @click="gotoPage(page)" :class="{ disabled: !page.enabled }">{{ page.number }}</a>
         </li>
 
-        <li v-if="page.type === 'more'">
+        <li :key="`ellipsis${index}`" v-if="page.type === 'more'">
           <span class="pagination-ellipsis" @click="ellipsisClick($event)">&hellip;</span>
         </li>
       </template>
