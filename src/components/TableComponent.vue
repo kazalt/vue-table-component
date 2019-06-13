@@ -44,7 +44,7 @@
           :count="count"
           @pageChange="pageChange"
           @ellipsisClick="paginationEllipsisClick"
-        ></pagination>
+        />
       </slot>
     </template>
   </div>
