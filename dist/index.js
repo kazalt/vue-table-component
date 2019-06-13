@@ -5167,7 +5167,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "ellipsisClick": _vm.paginationEllipsisClick
     }
   })], {
-    "pagination": _vm.pagination
+    "pagination": Object.assign({}, _vm.pagination,
+      {pageChange: _vm.pageChange,
+      paginationEllipsisClick: _vm.paginationEllipsisClick})
   })] : _vm._e()], 2)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
