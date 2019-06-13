@@ -37,13 +37,15 @@
         </div>
 
         <template v-if="pagination">
-          <pagination
-            :current-page="pagination.currentPage"
-            :per-page="pagination.perPage"
-            :count="count"
-            @pageChange="pageChange"
-            @ellipsisClick="paginationEllipsisClick"
-          ></pagination>
+          <slot name="pagination" :pagination="pagination">
+            <pagination
+              :current-page="pagination.currentPage"
+              :per-page="pagination.perPage"
+              :count="count"
+              @pageChange="pageChange"
+              @ellipsisClick="paginationEllipsisClick"
+            ></pagination>
+          </slot>
         </template>
     </div>
 </template>
