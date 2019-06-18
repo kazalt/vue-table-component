@@ -2,7 +2,7 @@ import TableComponent from '@/components/TableComponent.vue';
 import TableColumn from '@/components/TableColumn';
 
 describe('TableComponent', () => {
-  let component, localVue;
+  let localVue;
 
   beforeEach(() => {
     localVue = createLocalVue();
@@ -68,14 +68,14 @@ describe('TableComponent', () => {
         await component.vm.$nextTick();
       });
 
-      it('should not display lastName header', async() => {
+      it('should not display lastName header', () => {
         const headers = component.findAll('th').wrappers;
         const headerTitles = headers.map((header) => header.text());
 
         expect(headerTitles).to.deep.equal(['First name']);
       });
 
-      it('should not display lastName content', async() => {
+      it('should not display lastName content', () => {
         const trWrappers = component.findAll('tbody tr').wrappers;
         const mappedRows = trWrappers.map((tr) => {
           const tdWrappers = tr.findAll('td').wrappers;
@@ -84,7 +84,7 @@ describe('TableComponent', () => {
 
         const expectedValues = data.map((item) => {
           delete item.lastName;
-          return Object.values(item)
+          return Object.values(item);
         });
         expect(mappedRows).to.deep.equal(expectedValues);
       });
