@@ -210,10 +210,8 @@ export default {
     async mapDataToRows() {
       const data = this.usesLocalData ? this.prepareLocalData() : await this.fetchServerData();
 
-      let rowId = 0;
-
       this.rows = data
-        .map((rowData) => ({ ...rowData, vueTableComponentInternalRowId: rowId++ }))
+        .map((rowData, rowIndex) => ({ ...rowData, vueTableComponentInternalRowId: rowIndex }))
         .map((rowData) => new Row(rowData, this.columns));
     },
 
