@@ -1,15 +1,14 @@
 <template>
-    <th
-        @click="clicked"
-        :class="headerClass"
-        role="columnheader"
-        slot-scope="col"
-        :aria-sort="ariaSort"
-        :aria-disabled="ariaDisabled"
-        v-if="this.isVisible"
-    >
-        {{ label }}
-    </th>
+  <th
+    @click="clicked"
+    :class="headerClass"
+    role="columnheader"
+    :aria-sort="ariaSort"
+    :aria-disabled="ariaDisabled"
+    v-if="this.isVisible"
+  >
+    {{ label }}
+  </th>
 </template>
 
 <script>

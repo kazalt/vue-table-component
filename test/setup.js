@@ -14,6 +14,7 @@ const testUtils = require('@vue/test-utils');
 chai.use(sinonChai);
 
 global.expect = chai.expect;
+global.createLocalVue = testUtils.createLocalVue;
 global.mount = testUtils.mount;
 global.shallowMount = testUtils.shallowMount;
 global.sinon = sinon;

@@ -1,0 +1,14 @@
+{
+  "env": {
+    "mocha": true
+  },
+  "globals": {
+    "__rewire_reset_all__": false,
+    "createLocalVue": false,
+    "expect": false,
+    "mount": false,
+    "shallowMount": false,
+    "sinon": false,
+    "Vue": false
+  }
+}
