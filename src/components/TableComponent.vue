@@ -243,7 +243,6 @@ export default {
     },
 
     changeSorting(column) {
-      console.log('here');
       if (this.sort.fieldName === column.show) {
         this.sort.order = this.sort.order === 'asc' ? 'desc' : 'asc';
       } else {

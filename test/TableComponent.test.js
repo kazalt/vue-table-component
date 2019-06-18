@@ -153,7 +153,6 @@ describe('TableComponent', () => {
             return tdWrappers.map((element) => element.text());
           });
 
-          const expectedValues = data.map((item) => Object.values(item));
           expect(mappedRows).to.deep.equal([
             ['a', 'a'],
             ['b', 'c'],
@@ -178,7 +177,6 @@ describe('TableComponent', () => {
               return tdWrappers.map((element) => element.text());
             });
 
-            const expectedValues = data.map((item) => Object.values(item));
             expect(mappedRows).to.deep.equal([
               ['c', 'b'],
               ['b', 'c'],
@@ -217,7 +215,6 @@ describe('TableComponent', () => {
             return tdWrappers.map((element) => element.text());
           });
 
-          const expectedValues = data.map((item) => Object.values(item));
           expect(mappedRows).to.deep.equal([
             ['b', 'c'],
             ['a', 'a'],
