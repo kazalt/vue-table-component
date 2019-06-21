@@ -225,6 +225,42 @@ describe('TableComponent', () => {
     });
   });
 
+  describe('pagination', () => {
+    let pagination;
+
+    beforeEach(() => {
+      pagination = {
+        currentPage: 1,
+        perPage: 2,
+      };
+
+      data = [
+        { firstName: 'Jean', lastName: 'Tremblay' },
+        { firstName: 'Paul', lastName: 'Perron' },
+        { firstName: 'Michel', lastName: 'Beaudet' },
+        { firstName: 'Pierre', lastName: 'Richard' },
+        { firstName: 'Renée', lastName: 'Cote' },
+        { firstName: 'Julie', lastName: 'Beault' },
+        { firstName: 'Jannie', lastName: 'Gagnon' },
+        { firstName: 'Gérome', lastName: 'Roy' },
+      ];
+    });
+
+    context('when perPage is higher than number of items', () => {
+      beforeEach(() => {
+        pagination.perPage = 10;
+      });
+
+      it('should not display pagination', async() => {
+        const component = initMockComponent({ propsData: { pagination } });
+        await component.vm.$nextTick();
+
+        const pager = component.findAll('.pager');
+        expect(pager.length).to.equal(0);
+      });
+    });
+  });
+
   function initMockComponent({ firstNameSortable = false, lastNameHidden = false, propsData = {} } = {}) {
     const defaultSlot = `
       <table-column show="firstName" label="First name" :sortable="${firstNameSortable}"></table-column>
