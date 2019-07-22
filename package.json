@@ -20,8 +20,7 @@
   },
   "homepage": "https://github.com/cognibox/vue-table-component",
   "dependencies": {
-    "vue": "^2.6.10",
-    "vue-multiselect": "^2.1.6"
+    "vue": "^2.6.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.7.0",

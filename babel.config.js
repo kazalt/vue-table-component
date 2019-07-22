@@ -1,4 +1,4 @@
 module.exports = {
-  presets: ['@vue/app'],
+  presets: [['@vue/app', { useBuiltIns: 'entry', corejs: 3 }]],
   plugins: ['rewire'],
 };
