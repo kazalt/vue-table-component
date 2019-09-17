@@ -22,7 +22,7 @@
             @rowClick="emitRowClick"
           ></table-row>
           </tbody>
-          <tfoot>
+          <tfoot v-if="$slots.tfoot">
               <slot name="tfoot" :rows="rows"></slot>
           </tfoot>
       </table>
