@@ -124,7 +124,7 @@ describe('TableComponent', () => {
     });
 
     context('with footer slot', () => {
-      it('should show the footer', async () => {
+      it('should show the footer', async() => {
         const component = initMockComponent({ firstNameSortable: true, slots: { tfoot: 'something' } });
         await component.vm.$nextTick();
         const tfoot = component.find('tfoot');
@@ -133,11 +133,10 @@ describe('TableComponent', () => {
     });
 
     context('without footer slot', () => {
-      it('should not show the footer', async () => {
+      it('should not show the footer', async() => {
         const component = initMockComponent({ firstNameSortable: true });
         await component.vm.$nextTick();
         const tfoot = component.find('tfoot');
-        console.log(tfoot.exists());
         expect(tfoot.exists()).be.false;
       });
     });
@@ -226,18 +225,19 @@ describe('TableComponent', () => {
     });
   });
 
-  function initMockComponent({ firstNameSortable = false, lastNameHidden = false, propsData = {} } = {}) {
+  function initMockComponent({ firstNameSortable = false, lastNameHidden = false, propsData = {}, slots = {} } = {}) {
     const defaultSlot = `
       <table-column show="firstName" label="First name" :sortable="${firstNameSortable}"></table-column>
       <table-column show="lastName" label="Last name" :hidden="${lastNameHidden}"></table-column>
     `;
 
     return mockTableComponent({
-      ...propsData,
       data: data,
+      ...propsData,
     }, {
       slots: {
         default: defaultSlot,
+        ...slots,
       },
     });
   }

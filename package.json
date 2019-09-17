@@ -23,6 +23,7 @@
     "vue": "^2.6.10"
   },
   "devDependencies": {
+    "@cognibox/eslint-config-cbx-vue": "^1.0.2",
     "@vue/cli-plugin-babel": "^3.7.0",
     "@vue/cli-plugin-unit-mocha": "^3.7.0",
     "@vue/cli-service": "^3.7.0",
@@ -33,7 +34,6 @@
     "babel-plugin-rewire": "^1.2.0",
     "chai": "^4.2.0",
     "eslint": "^5.16.0",
-    "eslint-config-cbx": "git+https://github.com/cognibox/eslint-config-cbx.git",
     "eslint-plugin-vue": "^5.2.2",
     "font-awesome": "^4.7.0",
     "jsdom": "^15.1.1",
