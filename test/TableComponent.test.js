@@ -83,6 +83,45 @@ describe('TableComponent', () => {
       expect(mappedRows).to.deep.equal(expectedValues);
     });
 
+    context('when giving an afterRow slot', () => {
+      let component;
+
+      beforeEach(async() => {
+        component = initMockComponent({
+          scopedSlots: {
+            'after-row': `
+              <div class="after-row" slot-scope="{ row, columns }">
+                <span class="after-row-first-name">
+                  {{ row.data.firstName }}
+                </span>
+                <span class="after-row-column-length">
+                  {{ columns.length }}
+                </span>
+              </div>
+            `,
+          },
+        });
+
+        await component.vm.$nextTick();
+      });
+
+      it('should display it', () => {
+        expect(component.findAll('.after-row').wrappers.length).to.equal(data.length);
+      });
+
+      it('should have access to the row', () => {
+        const firstNames = component.findAll('.after-row-first-name').wrappers.map((wrapper) => wrapper.text());
+        expect(firstNames.length).to.equal(data.length);
+        expect(firstNames).to.deep.equal(data.map((row) => row.firstName));
+      });
+
+      it('should have access to the row', () => {
+        const lengths = component.findAll('.after-row-column-length').wrappers.map((wrapper) => wrapper.text());
+        expect(lengths.length).to.equal(data.length);
+        expect(lengths).to.deep.equal(data.map((row) => `${Object.keys(row).length}`));
+      });
+    });
+
     context('when lastName is hidden', () => {
       let component;
 
@@ -225,7 +264,7 @@ describe('TableComponent', () => {
     });
   });
 
-  function initMockComponent({ firstNameSortable = false, lastNameHidden = false, propsData = {}, slots = {} } = {}) {
+  function initMockComponent({ firstNameSortable = false, lastNameHidden = false, propsData = {}, slots = {}, ...args } = {}) {
     const defaultSlot = `
       <table-column show="firstName" label="First name" :sortable="${firstNameSortable}"></table-column>
       <table-column show="lastName" label="Last name" :hidden="${lastNameHidden}"></table-column>
@@ -239,6 +278,7 @@ describe('TableComponent', () => {
         default: defaultSlot,
         ...slots,
       },
+      ...args,
     });
   }
 
