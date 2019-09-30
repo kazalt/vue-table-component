@@ -7,7 +7,9 @@
     :aria-disabled="ariaDisabled"
     @click="clicked"
   >
-    {{ label }}
+    <span>
+      {{ label }}
+    </span>
   </th>
 </template>
 
